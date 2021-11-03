@@ -4,8 +4,9 @@ from PySide2 import QtWidgets, QtCore, QtGui
 import sys
 
 class Startup(QtWidgets.QWidget):
-    def __init__(self):
+    def __init__(self, appctxt):
         super().__init__()
+        self.appctxt = appctxt
         self.setWindowFlags(QtGui.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.showFullScreen()
@@ -14,7 +15,7 @@ class Startup(QtWidgets.QWidget):
         self.g_layout.setAlignment(QtCore.Qt.AlignHCenter)
 
         self.lbl_aind = QtWidgets.QLabel("AINDUSTRIES")
-        self.lbl_pres = QtWidgets.QLabel("Presents to you...")
+        self.lbl_pres = QtWidgets.QLabel("Presents:")
         self.lbl_aind.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignBottom)
         self.lbl_aind.setFont(QtGui.QFont("Nimbus Mono PS", 60))
         self.lbl_pres.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
@@ -70,17 +71,24 @@ class Startup(QtWidgets.QWidget):
         self.timer.start()
 
     def main(self):
-        self.main_window = MainWindow()
+        self.main_window = MainWindow(self.appctxt)
         self.main_window.showFullScreen()
         self.close()
 
 class MainWindow(QtWidgets.QWidget):
-    def __init__(self):
+    def __init__(self, appctxt):
         super().__init__()
+        self.appctxt = appctxt
+        self.glay = QtWidgets.QGridLayout(self)
+        self.glay.setMargin(0)
+        self.img = QtWidgets.QLabel()
+        self.screen = QtWidgets.QApplication.instance().primaryScreen().size()
+        self.img.setPixmap(QtGui.QPixmap(self.appctxt.get_resource("background.jpg")).scaled(self.screen.width(), self.screen.height()))
+        self.glay.addWidget(self.img, 1,1,1,1)
 
 
 if __name__ == '__main__':
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
-    window = Startup()
+    window = Startup(appctxt)
     exit_code = appctxt.app.exec_()      # 2. Invoke appctxt.app.exec_()
     sys.exit(exit_code)
