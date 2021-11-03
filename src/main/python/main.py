@@ -48,8 +48,8 @@ class Startup(QtWidgets.QWidget):
         self.sizeanim = QtCore.QPropertyAnimation(self.lbl_pres, b"size")
         self.sizeanim.setEasingCurve(QtCore.QEasingCurve.InOutCubic)
         self.sizeanim.setStartValue(QtCore.QSize(self.lbl_pres.width(), 0))
-        self.sizeanim.setEndValue(self.lbl_pres.size())
-        self.sizeanim.setDuration(1000)
+        self.sizeanim.setEndValue(QtCore.QSize(self.lbl_pres.width(), self.lbl_pres.height()))
+        self.sizeanim.setDuration(2000)
 
         self.animgroup.addAnimation(self.lineanim_size)
         #self.animgroup.addAnimation(self.posanim)
