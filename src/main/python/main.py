@@ -60,7 +60,7 @@ class Startup(QtWidgets.QWidget):
 
         self.txtchange = QtCore.QTimer()
         self.txtchange.setSingleShot(True)
-        self.txtchange.setInterval(1000)
+        self.txtchange.setInterval(2000)
         self.txtchange.timeout.connect(self.txtchange_)
         self.txtchange.start()
 
@@ -72,7 +72,7 @@ class Startup(QtWidgets.QWidget):
 
         self.timer = QtCore.QTimer()
         self.timer.setSingleShot(True)
-        self.timer.setInterval(2750)
+        self.timer.setInterval(4500)
         self.timer.timeout.connect(self.main)
         self.timer.start()
 
@@ -92,14 +92,21 @@ class Startup(QtWidgets.QWidget):
         self.txt_change.setDuration(500)
 
         self.txt_changeb = self.txt_change
-        self.txt_changeb.setDirection(QtCore.QPropertyAnimation.Direction.Backward)
+        self.txt_changeb.setStartValue(0)
+        self.txt_changeb.setEndValue(1)
 
         self.seq = QtCore.QSequentialAnimationGroup()
         self.seq.addPause(0)
         self.seq.addAnimation(self.txt_change)
         self.seq.addAnimation(self.txt_changeb)
+        self.timerc = QtCore.QTimer()
+        self.timerc.setSingleShot(True)
+        self.timerc.setInterval(100)
+        self.timerc.timeout.connect(self.change_text_)
+        self.timerc.start()
         self.seq.start()
 
+    def change_text_(self):
         self.lbl_aind.setText("Cmd Prompt")
         self.lbl_pres.setText("")
         self.line.setStyleSheet("QFrame {background-color: rgba(1,1,1,0);}")
