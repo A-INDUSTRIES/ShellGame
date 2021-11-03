@@ -63,6 +63,20 @@ class Startup(QtWidgets.QWidget):
         self.animgroup.addAnimation(self.lineanim_pos)
         self.animgroup.start()
 
+        self.timer = QtCore.QTimer()
+        self.timer.setSingleShot(True)
+        self.timer.setInterval(1250)
+        self.timer.timeout.connect(self.main)
+        self.timer.start()
+
+    def main(self):
+        self.main_window = MainWindow()
+        self.main_window.showFullScreen()
+        self.close()
+
+class MainWindow(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
 
 
 if __name__ == '__main__':
