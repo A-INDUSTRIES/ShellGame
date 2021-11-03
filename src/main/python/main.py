@@ -58,6 +58,12 @@ class Startup(QtWidgets.QWidget):
         self.sizeanim.setEndValue(QtCore.QSize(537, 60))
         self.sizeanim.setDuration(1000)
 
+        self.txtchange = QtCore.QTimer()
+        self.txtchange.setSingleShot(True)
+        self.txtchange.setInterval(1000)
+        self.txtchange.timeout.connect(self.txtchange_)
+        self.txtchange.start()
+
         self.animgroup.addAnimation(self.lineanim_size)
         self.animgroup.addAnimation(self.posanim)
         self.animgroup.addAnimation(self.sizeanim)
@@ -66,7 +72,7 @@ class Startup(QtWidgets.QWidget):
 
         self.timer = QtCore.QTimer()
         self.timer.setSingleShot(True)
-        self.timer.setInterval(1250)
+        self.timer.setInterval(2750)
         self.timer.timeout.connect(self.main)
         self.timer.start()
 
@@ -74,6 +80,30 @@ class Startup(QtWidgets.QWidget):
         self.main_window = MainWindow(self.appctxt)
         self.main_window.showFullScreen()
         self.close()
+    
+    def txtchange_(self):
+        self.op = QtWidgets.QGraphicsOpacityEffect(self)
+        self.setGraphicsEffect(self.op)
+
+        self.txt_change = QtCore.QPropertyAnimation(self.op, b"opacity")
+        self.txt_change.setEasingCurve(QtCore.QEasingCurve.InOutCubic)
+        self.txt_change.setStartValue(1)
+        self.txt_change.setEndValue(0)
+        self.txt_change.setDuration(500)
+
+        self.txt_changeb = self.txt_change
+        self.txt_changeb.setDirection(QtCore.QPropertyAnimation.Direction.Backward)
+
+        self.seq = QtCore.QSequentialAnimationGroup()
+        self.seq.addPause(0)
+        self.seq.addAnimation(self.txt_change)
+        self.seq.addAnimation(self.txt_changeb)
+        self.seq.start()
+
+        self.lbl_aind.setText("Cmd Prompt")
+        self.lbl_pres.setText("")
+        self.line.setStyleSheet("QFrame {background-color: rgba(1,1,1,0);}")
+        
 
 class MainWindow(QtWidgets.QWidget):
     def __init__(self, appctxt):
