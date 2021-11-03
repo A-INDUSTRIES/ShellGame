@@ -41,8 +41,19 @@ class Startup(QtWidgets.QWidget):
 
         self.posanim = QtCore.QPropertyAnimation(self.lbl_pres, b"pos")
         self.posanim.setEasingCurve(QtCore.QEasingCurve.InOutCubic)
+        self.posanim.setStartValue(QtCore.QPoint(self.lbl_pres.x(),self.lbl_pres.y() - 25))
+        self.posanim.setEndValue(QtCore.QPoint(self.lbl_pres.x(),self.lbl_pres.y()))
+        self.posanim.setDuration(1000)
+
+        self.sizeanim = QtCore.QPropertyAnimation(self.lbl_pres, b"size")
+        self.sizeanim.setEasingCurve(QtCore.QEasingCurve.InOutCubic)
+        self.sizeanim.setStartValue(QtCore.QSize(self.lbl_pres.width(), 0))
+        self.sizeanim.setEndValue(self.lbl_pres.size())
+        self.sizeanim.setDuration(1000)
 
         self.animgroup.addAnimation(self.lineanim_size)
+        #self.animgroup.addAnimation(self.posanim)
+        self.animgroup.addAnimation(self.sizeanim)
         self.animgroup.start()
 
 
