@@ -1,6 +1,8 @@
 from fbs_runtime.application_context.PySide2 import ApplicationContext
 from PySide2 import QtWidgets, QtCore, QtGui
 
+from gamemain import MainWindow
+
 import sys
 
 class Startup(QtWidgets.QWidget):
@@ -110,19 +112,6 @@ class Startup(QtWidgets.QWidget):
         self.lbl_aind.setText("Cmd Prompt")
         self.lbl_pres.setText("")
         self.line.setStyleSheet("QFrame {background-color: rgba(1,1,1,0);}")
-        
-
-class MainWindow(QtWidgets.QWidget):
-    def __init__(self, appctxt):
-        super().__init__()
-        self.appctxt = appctxt
-        self.glay = QtWidgets.QGridLayout(self)
-        self.glay.setMargin(0)
-        self.img = QtWidgets.QLabel()
-        self.screen = QtWidgets.QApplication.instance().primaryScreen().size()
-        self.img.setPixmap(QtGui.QPixmap(self.appctxt.get_resource("background.jpg")).scaled(self.screen.width(), self.screen.height()))
-        self.glay.addWidget(self.img, 1,1,1,1)
-
 
 if __name__ == '__main__':
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
