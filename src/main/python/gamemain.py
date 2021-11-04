@@ -59,17 +59,22 @@ class MainWindow(QtWidgets.QWidget):
 
     def __init_menu_layout(self):
         self.menu_layout = QtWidgets.QGridLayout()
+
         self.menu_profile_pic = QtWidgets.QLabel()
-        self.menu_profile_pic.setPixmap(self.appctxt.get_resource("usr_pic.png"))
         self.menu_profile_pic.setFixedSize(50,50)
+        self.menu_profile_pic.setStyleSheet("""QLabel {border:1px solid white; border-radius:4px; 
+        background-image: url(""" + str(self.appctxt.get_resource("usr_pic.png")) + """);}""")
+
         self.menu_layout.addWidget(self.menu_profile_pic)
+
         self.menu = QtWidgets.QWidget()
         self.menu.setLayout(self.menu_layout)
-        self.sys_layout.addWidget(self.menu, 80,1,1,1)
         self.menu.setHidden(True)
         self.menu.setObjectName("menu")
         self.menu.setStyleSheet("""QWidget#menu {background: qlineargradient(x1:0.5, y1:1, x2:0.5, y2:0, 
         stop:0 rgb(29, 78, 175), stop:0.5 rgb(35, 93, 217), stop:1 rgb(29, 78, 175))}""")
+
+        self.sys_layout.addWidget(self.menu, 80,1,1,1)
 
     def _sh_menu(self):
         self.menu.setHidden(self.is_menu_shown)
