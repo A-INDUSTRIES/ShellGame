@@ -25,10 +25,23 @@ class MainWindow(QtWidgets.QWidget):
         self.spacer = QtWidgets.QSpacerItem(0,0)
         self.sys_layout.addItem(self.spacer, 1,1,90,160)
 
-        self.btn_start = QtWidgets.QPushButton("Start")
-        self.btn_start.setStyleSheet("QPushButton {background-color: green}")
+        self.btn_start = QtWidgets.QPushButton(" start")
+        self.btn_start.setFixedSize(80,25)
+        self.btn_start.setIcon(QtGui.QIcon(QtGui.QPixmap(self.appctxt.get_resource("winxp.png"))))
+        self.btn_start.setStyleSheet("""
+        QPushButton {
+            background-color: green;
+            border-top-right-radius: 11px;
+            border-bottom-right-radius: 11px;
+            font: bold italic;
+            color: white;
+            } 
+        
+        QPushButton:pressed {
+            background-color: darkgreen;
+            }""")
 
-        self.sys_layout.addWidget(self.btn_start, 2,2,1,1)
+        self.sys_layout.addWidget(self.btn_start, 90,1,1,1)
 
 
 #For testing purposes:
