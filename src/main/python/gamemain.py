@@ -1,4 +1,7 @@
+from fbs_runtime.application_context.PySide2 import ApplicationContext
 from PySide2 import QtWidgets, QtCore, QtGui
+
+import sys
 
 class MainWindow(QtWidgets.QWidget):
     def __init__(self, appctxt):
@@ -13,5 +16,25 @@ class MainWindow(QtWidgets.QWidget):
         self.__init_sys_layout()
 
     def __init_sys_layout(self):
+        """Creating another layout to avoid conflict with background"""
         self.sys_layout = QtWidgets.QGridLayout()
         self.glay.addLayout(self.sys_layout, 1,1,1,1)
+
+        """Nul spacer added to layout to force size and
+        ensure 16:9 ratio so each 1:1 space is actually a square"""
+        self.spacer = QtWidgets.QSpacerItem(0,0)
+        self.sys_layout.addItem(self.spacer, 1,1,90,160)
+
+        self.btn_start = QtWidgets.QPushButton("Start")
+        self.btn_start.setStyleSheet("QPushButton {background-color: green}")
+
+        self.sys_layout.addWidget(self.btn_start, 2,2,1,1)
+
+
+#For testing purposes:
+if __name__ == '__main__':
+    appctxt = ApplicationContext()
+    window = MainWindow(appctxt)
+    window.showFullScreen()
+    exit_code = appctxt.app.exec_()
+    sys.exit(exit_code)

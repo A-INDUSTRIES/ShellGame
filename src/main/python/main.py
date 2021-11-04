@@ -113,8 +113,9 @@ class Startup(QtWidgets.QWidget):
         self.lbl_pres.setText("")
         self.line.setStyleSheet("QFrame {background-color: rgba(1,1,1,0);}")
 
+#For actual program launch:
 if __name__ == '__main__':
-    appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
+    appctxt = ApplicationContext()
     window = Startup(appctxt)
-    exit_code = appctxt.app.exec_()      # 2. Invoke appctxt.app.exec_()
+    exit_code = appctxt.app.exec_()
     sys.exit(exit_code)
