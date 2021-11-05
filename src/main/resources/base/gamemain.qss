@@ -22,10 +22,13 @@ QPushButton:pressed#btn_start {
 
 QLabel#usr_name {
     color: white;
+    font-size: 15px;
 }
 
 QWidget#mqa {
-    background: white
+    background: white;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 QWidget#menu {
@@ -44,10 +47,109 @@ QLabel#menu_pp {
 QPushButton#mqa_internet {
     text-align: center left;
     border-radius: 0px;
-    margin: 2px;
+    margin-top: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
 }
 
 QPushButton:hover#mqa_internet {
     background-color: rgb(47, 113, 205);
     color: white;
+}
+
+QPushButton#mqa_mail {
+    text-align: center left;
+    border-radius: 0px;
+    margin-top: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+QPushButton:hover#mqa_mail {
+    background-color: rgb(47, 113, 205);
+    color: white;
+}
+
+QPushButton#mqa_weeper {
+    text-align: center left;
+    border-radius: 0px;
+    margin-top: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+QPushButton:hover#mqa_weeper {
+    background-color: rgb(47, 113, 205);
+    color: white;
+}
+
+QPushButton#mqa_note {
+    text-align: center left;
+    border-radius: 0px;
+    margin-top: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+QPushButton:hover#mqa_note {
+    background-color: rgb(47, 113, 205);
+    color: white;
+}
+
+QPushButton#mqa_winamp {
+    text-align: center left;
+    border-radius: 0px;
+    margin-top: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+QPushButton:hover#mqa_winamp {
+    background-color: rgb(47, 113, 205);
+    color: white;
+}
+
+QPushButton#mqa_paint {
+    text-align: center left;
+    border-radius: 0px;
+    margin-top: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+QPushButton:hover#mqa_paint {
+    background-color: rgb(47, 113, 205);
+    color: white;
+}
+
+QPushButton#mqa_media {
+    text-align: center left;
+    border-radius: 0px;
+    margin-top: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+QPushButton:hover#mqa_media {
+    background-color: rgb(47, 113, 205);
+    color: white;
+}
+
+QPushButton#mqa_messenger {
+    text-align: center left;
+    border-radius: 0px;
+    margin-top: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+QPushButton:hover#mqa_messenger {
+    background-color: rgb(47, 113, 205);
+    color: white;
+}
+
+QLabel#mqa_sep {
+    background-color: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, stop:0 rgba(0,0,0,0), stop:0.5 lightgray, stop:1 rgba(0,0,0,0));
+    margin-left: 6px;
+    margin-right: 6px;
 }
