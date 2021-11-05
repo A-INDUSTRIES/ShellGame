@@ -28,7 +28,7 @@ class MainWindow(QtWidgets.QWidget):
         self.sys_layout.addItem(self.spacer, 1,1,90,160)
 
         self.taskbar = QtWidgets.QLabel("")
-        self.taskbar.setFixedHeight(25)
+        self.taskbar.setFixedHeight(30)
         self.taskbar.setStyleSheet("""
         QLabel {
             background-color: qlineargradient(x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(29, 78, 175), 
@@ -36,7 +36,7 @@ class MainWindow(QtWidgets.QWidget):
         }""")
 
         self.btn_start = QtWidgets.QPushButton(" start")
-        self.btn_start.setFixedSize(80,25)
+        self.btn_start.setFixedSize(90,30)
         self.btn_start.setIcon(QtGui.QIcon(QtGui.QPixmap(self.appctxt.get_resource("winxp.png"))))
         self.btn_start.setStyleSheet("""
         QPushButton {
@@ -46,6 +46,7 @@ class MainWindow(QtWidgets.QWidget):
             border-bottom-right-radius: 11px;
             font: bold italic;
             color: white;
+            font-size: 15px;
             } 
         
         QPushButton:pressed {
@@ -61,20 +62,44 @@ class MainWindow(QtWidgets.QWidget):
         self.menu_layout = QtWidgets.QGridLayout()
 
         self.menu_profile_pic = QtWidgets.QLabel()
-        self.menu_profile_pic.setFixedSize(50,50)
+        self.menu_profile_pic.setFixedSize(45,45)
         self.menu_profile_pic.setStyleSheet("""QLabel {border:1px solid white; border-radius:4px; 
         background-image: url(""" + str(self.appctxt.get_resource("usr_pic.png")) + """);}""")
 
-        self.menu_layout.addWidget(self.menu_profile_pic)
+        self.menu_usr_name = QtWidgets.QLabel("User")
+        self.menu_usr_name.setAlignment(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignLeft)
+        self.menu_usr_name.setStyleSheet("""QLabel {color: white;}""")
+
+        self.menu_quick_app = QtWidgets.QWidget()
+        self.menu_quick_app_layout = QtWidgets.QGridLayout()
+        self.menu_quick_app.setLayout(self.menu_quick_app_layout)
+        self.menu_quick_app.setObjectName("mqa")
+        self.menu_quick_app.setStyleSheet("""QWidget#mqa {background: white}""")
+
+        self.__init_quick_apps()
+
+        self.menu_layout.addWidget(self.menu_profile_pic, 1,1,1,1)
+        self.menu_layout.addWidget(self.menu_usr_name, 1,2,1,7)
+        self.menu_layout.addWidget(self.menu_quick_app, 2,1,1,4)
 
         self.menu = QtWidgets.QWidget()
         self.menu.setLayout(self.menu_layout)
         self.menu.setHidden(True)
         self.menu.setObjectName("menu")
         self.menu.setStyleSheet("""QWidget#menu {background: qlineargradient(x1:0.5, y1:1, x2:0.5, y2:0, 
-        stop:0 rgb(29, 78, 175), stop:0.5 rgb(35, 93, 217), stop:1 rgb(29, 78, 175))}""")
+        stop:0 rgb(29, 78, 175), stop:0.5 rgb(35, 93, 217), stop:1 rgb(29, 78, 175));
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-top: 2px solid rgb(106, 157, 223);}""")
 
         self.sys_layout.addWidget(self.menu, 80,1,1,1)
+
+    def __init_quick_apps(self):
+        # mqa = menu_quick_app
+        self.mqa_internet = QtWidgets.QPushButton("Internet")
+        self.mqa_internet.setIcon(QtGui.QIcon(QtGui.QPixmap(self.appctxt.get_resource("internet.png"))))
+        self.mqa_internet.setIconSize(QtCore.QSize(40,40))
+        self.menu_quick_app_layout.addWidget(self.mqa_internet, 1,1,2,2)
 
     def _sh_menu(self):
         self.menu.setHidden(self.is_menu_shown)
