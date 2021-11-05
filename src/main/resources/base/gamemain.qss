@@ -1,0 +1,53 @@
+/*Stylesheets of widgets of game's MainWindow*/
+
+QLabel#taskbar {
+    background-color: qlineargradient(x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgb(29, 78, 175), 
+    stop:0.5 rgb(35, 93, 217), stop:1 rgb(29, 78, 175));
+}
+
+QPushButton#btn_start {
+    background-color: qradialgradient(cx:0.7, cy:0.3, radius: 1,
+        fx:1, fy:0, stop:0 rgb(53, 132, 60), stop:1 rgb(34, 86, 40));
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
+    font: bold italic;
+    color: white;
+    font-size: 15px;
+}
+        
+QPushButton:pressed#btn_start {
+    background-color: qradialgradient(cx:0.7, cy:0.3, radius: 1,
+        fx:1, fy:0, stop:0 rgb(29, 73, 34), stop:1 rgb(27, 68, 31));
+}
+
+QLabel#usr_name {
+    color: white;
+}
+
+QWidget#mqa {
+    background: white
+}
+
+QWidget#menu {
+    background: qlineargradient(x1:0.5, y1:1, x2:0.5, y2:0, 
+    stop:0 rgb(29, 78, 175), stop:0.5 rgb(35, 93, 217), stop:1 rgb(29, 78, 175));
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top: 2px solid rgb(106, 157, 223);
+}
+
+QLabel#menu_pp {
+    border: 1px solid white; border-radius:4px;
+    margin: 7px;
+}
+
+QPushButton#mqa_internet {
+    text-align: center left;
+    border-radius: 0px;
+    margin: 2px;
+}
+
+QPushButton:hover#mqa_internet {
+    background-color: rgb(47, 113, 205);
+    color: white;
+}
